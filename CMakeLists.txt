@@ -20,15 +20,15 @@ execute_process(
 	ERROR_QUIET
 )
 
-if(PYBIND11_STUBGEN_FOUND EQUAL 0)
-	message(STATUS "pybind11-stubgen found -> creating STUB files")
-
-	add_custom_command(
-		TARGET _ptest POST_BUILD
-		#			pybind11-stubgen _ptest 
-		#COMMAND bash -c "mv stubs/* ."
-		#COMMAND bash -c "rmdir stubs"
-	)
-else()
-	message(STATUS "pybind11-stubgen not found -> creating STUB files skipped")
-endif()
+#if(PYBIND11_STUBGEN_FOUND EQUAL 0)
+#	message(STATUS "pybind11-stubgen found -> creating STUB files")
+#
+#	add_custom_command(
+#		TARGET _ptest POST_BUILD
+#		#			pybind11-stubgen _ptest 
+#		#COMMAND bash -c "mv stubs/* ."
+#		#COMMAND bash -c "rmdir stubs"
+#	)
+#else()
+#	message(STATUS "pybind11-stubgen not found -> creating STUB files skipped")
+#endif()
