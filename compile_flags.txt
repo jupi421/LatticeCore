@@ -1,0 +1,2 @@
+-I/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include/python3.12
+-I/nix/store/nmaz1pklmqjh4m707qvfjd38ldsy5zff-python3-3.12.5-env/lib/python3.12/site-packages/pybind11/include
