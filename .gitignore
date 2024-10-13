@@ -1,4 +1,4 @@
 build/*
 .direnv/*
-compile_flags.txt
 .cache/*
+*.pyi
