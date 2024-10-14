@@ -10,4 +10,5 @@ In the project directory execute:
 mkdir build && cd build
 cmake ..
 make -j 4
+cd ..
 ```
