@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15...3.29)
-project(example LANGUAGES CXX)
+project(pytest LANGUAGES CXX)
 
 include(FetchContent)
 FetchContent_declare(
