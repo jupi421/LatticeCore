@@ -2,3 +2,5 @@ build/*
 .direnv/*
 .cache/*
 *.pyi
+test/*
+*a.out

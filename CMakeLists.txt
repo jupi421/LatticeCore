@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15...3.29)
-project(pytest LANGUAGES CXX)
+project(LatticeCore LANGUAGES CXX)
 
 include(FetchContent)
 FetchContent_declare(
@@ -9,5 +9,5 @@ FetchContent_declare(
 )
 FetchContent_MakeAvailable(pybind11)
 
-pybind11_add_module(_ptest src/ptest.cpp)
-install(TARGETS _ptest DESTINATION .)
+pybind11_add_module(_lattice_core src/lattice_core.cpp src/bindings.cpp) 
+install(TARGETS _lattice_core DESTINATION .)
