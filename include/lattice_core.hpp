@@ -2,7 +2,6 @@
 #include <vector>
 
 using Point = std::array<double, 3>;
-using LatticeVector = std::array<double, 3>;
 using BaseVector = std::array<double, 3>;
 
 BaseVector operator+( const BaseVector& v1, const BaseVector& v2 ); 
@@ -25,16 +24,19 @@ struct UnitCell {
 
 
 struct STOLattice {
-	LatticeVector a_x;
-	LatticeVector a_y; 
-	LatticeVector c_z;
-	double a;
-	double c;
 	size_t N_cells_rows;
 	size_t N_cells_cols;
 	size_t N_cells_layers;
+	double a;
+	double c;
 	std::vector<std::vector<std::vector<UnitCell>>> lattice;
 
 	STOLattice( double a, double c, size_t N_cells_rows=10, size_t N_cells_cols=10, size_t N_cells_layers=5 );
+
 	void populateLattice();
+	void rotateLattice();
+	void rotateO( double amplitude );
+	void mirror();
+	void shift( std::array<double, 3> shift_vector );
+	void removeDuplicates();
 };

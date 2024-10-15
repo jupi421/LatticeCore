@@ -28,11 +28,7 @@ STOLattice::STOLattice(  double a, double c, size_t N_cells_rows, size_t N_cells
 	, a{ a }
 	, c{ c }
 	, lattice{ N_cells_layers, std::vector<std::vector<UnitCell>>( N_cells_rows, std::vector<UnitCell>( N_cells_cols ) ) }
-{
-	LatticeVector a_x { a, 0, 0 };
-	LatticeVector a_y { 0, a, 0 };
-	LatticeVector c_z { 0, 0, c };
-}
+{}
 
 void STOLattice::populateLattice() {
 	for( size_t i=0; i<N_cells_layers; i++ ) {
