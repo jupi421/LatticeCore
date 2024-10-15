@@ -1,6 +1,10 @@
 #include <pybind11/pybind11.h>
+#include <pybind11/cast.h>
+#include <pybind11/detail/common.h>
 #include <pybind11/numpy.h>
 #include <cstddef>
+#include <pybind11/pytypes.h>
+#include <stdexcept>
 #include "../include/lattice_core.hpp"
 
 namespace py = pybind11;
@@ -13,7 +17,7 @@ PYBIND11_MODULE(_lattice_core, m) {
 		.def( py::init<double, double, size_t, size_t, size_t>(), "a"_a, "c"_a, "N_rows"_a=10, "N_cols"_a=10, "N_layers"_a=5 )
 		.def( "populate", &STOLattice::populateLattice, "Populate Lattice with atoms" )
 		.def_property_readonly( "lattice", 
-			[]( const STOLattice& lattice ) {
+			[] ( const STOLattice& lattice ) {
 				py::array_t<double> np_lattice{ { lattice.N_cells_layers, lattice.N_cells_rows, lattice.N_cells_cols, static_cast<size_t>(5), static_cast<size_t>(3) } };
 				auto np_buffer{ np_lattice.mutable_unchecked<5>() };
 
@@ -52,5 +56,18 @@ PYBIND11_MODULE(_lattice_core, m) {
 				return np_lattice;
 			},
 			"Returns a np.ndarray of shape (Nlayers, Nrows, Ncols, 2, 3); The slice [:,:,:,i,:] returns the position of Sr, Ti, bottom O, front O and left O of each unit cell respectively"
+		)
+		.def( "shiftLattice", 
+		    [] ( STOLattice& lattice, py::array_t<double, py::array::c_style | py::array::forcecast > shift_vector ) {
+				try {
+					std::array<double, 3> shift_array = shift_vector.cast<std::array<double, 3>>();
+					lattice.shiftLattice( shift_array );
+				}
+				catch (const py::cast_error& e ) {
+					throw std::runtime_error("Input has to be iterable of size 3");
+			    }
+				return;
+		    },
+			"Shifts the lattice by shift_vector"
 		);
 }

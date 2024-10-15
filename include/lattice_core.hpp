@@ -34,9 +34,9 @@ struct STOLattice {
 	STOLattice( double a, double c, size_t N_cells_rows=10, size_t N_cells_cols=10, size_t N_cells_layers=5 );
 
 	void populateLattice();
-	void rotateLattice();
+	void rotateLattice( double angle );
 	void rotateO( double amplitude );
 	void mirror();
-	void shift( std::array<double, 3> shift_vector );
+	void shiftLattice( std::array<double, 3> shift_vector );
 	void removeDuplicates();
 };

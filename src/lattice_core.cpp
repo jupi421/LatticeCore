@@ -39,3 +39,17 @@ void STOLattice::populateLattice() {
 		}
 	}
 };
+
+void STOLattice::shiftLattice( std::array<double, 3> shift_vector ) {
+	for( size_t i=0; i<N_cells_layers; i++ ) {
+		for ( size_t j=0; j<N_cells_rows; j++ ) {
+			for ( size_t k=0; k<N_cells_cols; k++ ) {
+				lattice[i][j][k].Sr+shift_vector; 
+				lattice[i][j][k].Ti+shift_vector; 
+				lattice[i][j][k].O_bottom+shift_vector; 
+				lattice[i][j][k].O_front+shift_vector; 
+				lattice[i][j][k].O_left+shift_vector; 
+			}
+		}
+	}
+}
