@@ -9,6 +9,11 @@ BaseVector operator+( const BaseVector& v1, const BaseVector& v2 );
 
 struct UnitCell {
 	Point Sr{};
+	Point Ti{};
+	Point O_bottom{};
+	Point O_front{};
+	Point O_left{};
+
 	BaseVector a1{}; //Ti
 	BaseVector a2{}; //O_bottom
 	BaseVector a3{}; //O_front

@@ -11,6 +11,10 @@ UnitCell::UnitCell(size_t layer, size_t row, size_t col, double a, double c)
 	double z = row*c;
 
 	Sr = Point{ x, y, z };
+	Ti = Sr+a1;
+	O_bottom = Sr+a2;
+	O_front = Sr+a3;
+	O_left = Sr+a4;
 }
 
 BaseVector operator+( const BaseVector& v1, const BaseVector& v2 ) {
@@ -18,7 +22,7 @@ BaseVector operator+( const BaseVector& v1, const BaseVector& v2 ) {
 }
 
 STOLattice::STOLattice(  double a, double c, size_t N_cells_rows, size_t N_cells_cols, size_t N_cells_layers )
-	: N_cells_rows{ N_cells_cols } 
+	: N_cells_rows{ N_cells_rows } 
 	, N_cells_cols{ N_cells_cols } 
 	, N_cells_layers{ N_cells_layers }
 	, a{ a }
