@@ -9,5 +9,10 @@ FetchContent_declare(
 )
 FetchContent_MakeAvailable(pybind11)
 
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+
 pybind11_add_module(_lattice_core src/lattice_core.cpp src/bindings.cpp) 
+
+target_link_libraries(_lattice_core PRIVATE Eigen3::Eigen)
+
 install(TARGETS _lattice_core DESTINATION .)

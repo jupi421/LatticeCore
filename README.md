@@ -1,3 +1,6 @@
+## Dependencies
+Eigen > 3.3
+
 ## Build instructions
 
 clone the repository
