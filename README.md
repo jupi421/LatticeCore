@@ -11,7 +11,7 @@ pip install ase
 
 clone the repository
 ```
-git clone https://github.com/jupy421/LatticeCore.git
+git clone https://github.com/jupi421/LatticeCore.git
 ```
 
 In the project root directory execute:
