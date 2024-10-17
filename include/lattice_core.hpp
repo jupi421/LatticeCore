@@ -5,8 +5,6 @@ using Point = Eigen::Vector3d;
 using BaseVector = Eigen::Vector3d;
 using Vector = Eigen::Vector3d;
 
-void rodriguesRotation( Vector rotation_axis );
-
 struct UnitCell {
 	Point Sr{};
 	Point Ti{};
@@ -19,9 +17,8 @@ struct UnitCell {
 	BaseVector a3{}; //O_front
 	BaseVector a4{}; //O_left
 	
-	
 	UnitCell() = default;
-	UnitCell( size_t layer, size_t row, size_t col, double a, double c, double O_angle );
+	UnitCell( size_t layer, size_t row, size_t col, double a, double c, double angle );
 };
 
 
@@ -38,7 +35,6 @@ struct STOLattice {
 
 	void populateLattice();
 	void shiftLattice( const Vector shift_vector );
-	void rotateO( const double angle );
 	//void rotateLattice( double angle );
 	//void mirror();
 	//void removeDuplicates();
