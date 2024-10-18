@@ -4,3 +4,5 @@ build/*
 *.pyi
 test/*
 *a.out
+*.vasp
+POSCAR

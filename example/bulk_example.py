@@ -11,18 +11,18 @@ from ase.io import write
 ### define lattice parameters and create lattice object
 a = 3.905
 c = 1.12*3.905
-rotation_amplitude = 20
+rotation_amplitude = 3 
 
-N_row = 5
-N_col = 5
-N_layers = 1
+N_row = 4
+N_col = 4
+N_layers = 4
 
 lattice = lc.STOLattice( a, c, rotation_amplitude, N_row, N_col, N_layers )
 
 ### calculate atom positions
 lattice.populate()
 
-### return lattice as a numpy array
+### get lattice as a numpy array
 np_lattice = lattice.lattice
 
 ### extract positions for each species
@@ -41,11 +41,13 @@ ase_lattice = Atoms(symbols=Sr_symbols+Ti_symbols+O_symbols, positions=np.concat
 min_ = np.min(ase_lattice.positions, axis=0)
 max_ = np.max(ase_lattice.positions, axis=0)
 lattice_diagonal = max_ - min_
+lattice_diagonal[0] += a/2
+lattice_diagonal[1] += a/2
+lattice_diagonal[2] += c/2
 supercell_lattice_matrix = np.diag(lattice_diagonal)
 
 ### create supercell
 ase_lattice.cell = supercell_lattice_matrix
-ase_lattice.center()
 
 ### write lattice to POSCAR 
 ase_lattice.write('POSCAR.vasp', format='vasp', direct=True, sort=False)

@@ -2,6 +2,9 @@
 #include <Eigen/src/Core/Matrix.h>
 #include <cmath>
 #include <cstddef>
+#include <iostream>
+
+#define print(x) std::cout << x << std::endl;
 
 void rodriguesRotation( Point& point, Vector rotation_axis, const double angle ) {
 	rotation_axis /= rotation_axis.norm();
@@ -60,7 +63,7 @@ UnitCell::UnitCell( size_t layer, size_t row, size_t col, double a, double c, do
 			sign = -1;
 		}
 
-		angle = angle*M_PI/180;
+		angle = sign*angle*M_PI/180;
 		rotateO( *this, Ti, angle );
 	}
 }
